@@ -1,0 +1,38 @@
+class Solution {
+public:
+
+    void findKthSmallest(TreeNode* root,int& k,int& value){
+
+        
+
+        if(root==NULL) return;
+         
+        // follow inorder
+        // LNR
+
+        // L
+        findKthSmallest(root->left,k,value);
+
+        // N
+        k--;
+        if(k==0){
+            value=root->val;
+            
+        }
+        
+
+        // R
+       findKthSmallest(root->right,k,value);
+
+
+    }
+    int kthSmallest(TreeNode* root, int k) {
+          if(root==NULL) return -1;
+
+          int value=-1;
+        findKthSmallest(root,k,value);
+
+        return value;
+        
+    }
+};
